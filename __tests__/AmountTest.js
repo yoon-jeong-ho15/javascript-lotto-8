@@ -1,4 +1,4 @@
-import Amount from "../src/class/Amount";
+import Amount from "../src/class/Amount.js";
 
 describe("Amount 클래스 테스트", () => {
   describe("정상 케이스", () => {

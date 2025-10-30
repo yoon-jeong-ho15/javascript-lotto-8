@@ -3,7 +3,7 @@ import {
   checkIfForbidden,
   convertToNumber,
   checkAmountRange,
-} from "../validate";
+} from "../validate.js";
 
 class Amount {
   #ammount;
