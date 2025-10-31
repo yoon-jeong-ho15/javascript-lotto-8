@@ -1,7 +1,13 @@
 import { Console } from "@woowacourse/mission-utils";
 import { clearInput, convertToNumber } from "./utils/parse.js";
 import Amount from "./class/Amount.js";
-import { checkIfForbidden } from "./utils/validate.js";
+import {
+  checkIfDuplicatedNumbers,
+  checkIfForbidden,
+  checkIfHasNonNumberic,
+  checkNumberRange,
+  checkLength,
+} from "./utils/validate.js";
 
 export const handleAmountInput = async () => {
   try {
@@ -30,4 +36,22 @@ export const printLottos = (lottos) => {
   lottos.forEach((lotto) => Console.print(`${lotto}`));
 };
 
-export async function numberInput() {}
+export const handleNumberInput = async () => {
+  try {
+    const input = clearInput(
+      "number",
+      await Console.readLineAsync("당첨 번호를 입력해 주세요.\n")
+    );
+    checkIfHasNonNumberic(input);
+    const numbers = input.split(",").map((number) => {
+      checkNumberRange(Number(number));
+      return Number(number);
+    });
+    checkIfDuplicatedNumbers(numbers);
+    checkLength(numbers);
+    return numbers;
+  } catch (error) {
+    Console.print(error.message);
+    return await handleNumberInput();
+  }
+};

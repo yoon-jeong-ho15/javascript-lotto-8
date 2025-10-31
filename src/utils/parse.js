@@ -5,6 +5,10 @@ export const clearInput = (type, input) => {
   if (type === "number") return input.replaceAll(" ", "");
 };
 
+/////////////////////////////////////////////////////////////////////
+// 금액 파싱
+/////////////////////////////////////////////////////////////////////
+
 export const convertToNumber = (cleaned) => {
   // "25000" -> 25000
   if (Number(cleaned)) return Number(cleaned);

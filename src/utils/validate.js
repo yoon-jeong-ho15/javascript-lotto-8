@@ -1,4 +1,11 @@
-import { FORBIDDEN_INPUT, MAXIMUM_AMOUNT, LOTTO_PRICE } from "../constant.js";
+import {
+  FORBIDDEN_INPUT,
+  MAXIMUM_AMOUNT,
+  LOTTO_PRICE,
+  MAXIMUM_NUMBER,
+  MININUM_NUMBER,
+  REQUIRED_NUMBERS_COUNT,
+} from "../constant.js";
 
 /////////////////////////////////////////////////////////////////////
 // 입력 금액(로또 개수) 검증
@@ -31,9 +38,32 @@ export const checkDivisible = (amount) => {
 // 로또 번호 검증
 /////////////////////////////////////////////////////////////////////
 
+export const checkIfHasNonNumberic = (input) => {
+  if (/[^,0-9]/.test(input)) {
+    throw new Error(`[ERROR] 숫자 외의 문자를 입력할 수 없습니다.`);
+  }
+};
+
 export const checkIfDuplicatedNumbers = (numbers) => {
   const set = new Set(numbers);
   if (set.size !== numbers.length) {
     throw new Error(`[ERROR] 중복된 숫자가 입력되었습니다.`);
+  }
+};
+
+export const checkNumberRange = (number) => {
+  if (number < MININUM_NUMBER) {
+    throw new Error(`[ERROR] ${MININUM_NUMBER} 이상의 숫자를 입력해주세요`);
+  }
+  if (number > MAXIMUM_NUMBER) {
+    throw new Error(`[ERROR] ${MAXIMUM_NUMBER} 이하의 숫자를 입력해주세요`);
+  }
+};
+
+export const checkLength = (numbers) => {
+  if (numbers.length !== REQUIRED_NUMBERS_COUNT) {
+    throw new Error(
+      `[ERROR] 로또 번호는 ${REQUIRED_NUMBERS_COUNT}개여야 합니다.`
+    );
   }
 };
