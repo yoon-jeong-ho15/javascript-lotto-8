@@ -1,7 +1,12 @@
-export const REQUIRED_NUMBERS = 6;
+export const REQUIRED_NUMBERS_COUNT = 6;
+export const MININUM_NUMBER = 1;
+export const MAXIMUM_NUMBER = 45;
+
 export const FORBIDDEN_INPUT = /[^ ,0-9일이삼사오육칠팔구십백천만원]/;
-export const MAXIMUM_AMMOUNT = 100000;
-export const MINIMUM_AMMOUNT = 1000;
+
+export const MAXIMUM_AMOUNT = 100000;
+export const LOTTO_PRICE = 1000;
+
 export const NUMBER_MAP = {
   일: 1,
   이: 2,
