@@ -21,3 +21,18 @@ describe("로또 클래스 테스트", () => {
     });
   });
 });
+
+describe("당첨번호 매치 테스트", () => {
+  test("3개 숫자가 일치", () => {
+    const numbers = [1, 2, 3, 4, 5, 6];
+    const lotto = new Lotto([1, 2, 3, 7, 8, 9]);
+    const result = lotto.matchNumbers(numbers);
+    expect(result).toBe(3);
+  });
+  test("0개 숫자가 일치", () => {
+    const numbers = [1, 2, 3, 4, 5, 6];
+    const lotto = new Lotto([7, 8, 9, 10, 11, 12]);
+    const result = lotto.matchNumbers(numbers);
+    expect(result).toBe(0);
+  });
+});

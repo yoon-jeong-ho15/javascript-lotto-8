@@ -1,5 +1,4 @@
-import { REQUIRED_NUMBERS_COUNT } from "../constant.js";
-import { checkIfDuplicatedNumbers } from "../utils/validate.js";
+import { checkIfDuplicatedNumbers, checkLength } from "../utils/validate.js";
 
 class Lotto {
   #numbers;
@@ -10,16 +9,23 @@ class Lotto {
   }
 
   #validate(numbers) {
-    if (numbers.length !== REQUIRED_NUMBERS_COUNT) {
-      throw new Error(
-        `[ERROR] 로또 번호는 ${REQUIRED_NUMBERS_COUNT}개여야 합니다.`
-      );
-    }
+    checkLength(numbers);
     checkIfDuplicatedNumbers(numbers);
   }
 
   toString() {
     return `[${this.#numbers.join(", ")}]`;
+  }
+
+  matchNumbers(winningNumbers) {
+    const matchCount = winningNumbers.filter((number) =>
+      this.#numbers.includes(number)
+    ).length;
+    return matchCount;
+  }
+
+  hasBonus(bonusNumber) {
+    return this.#numbers.includes(bonusNumber);
   }
 }
 
