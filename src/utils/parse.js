@@ -1,3 +1,5 @@
+import { DIGIT_NUMBER_MAP, NUMBER_MAP } from "../constant.js";
+
 export const clearInput = (type, input) => {
   if (type === "amount") return input.replaceAll(/[ ,원]/g, "");
   if (type === "number") return input.replaceAll(" ", "");

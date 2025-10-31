@@ -1,13 +1,7 @@
-import {
-  FORBIDDEN_INPUT,
-  MAXIMUM_AMOUNT,
-  LOTTO_PRICE,
-  NUMBER_MAP,
-  DIGIT_NUMBER_MAP,
-} from "../constant.js";
+import { FORBIDDEN_INPUT, MAXIMUM_AMOUNT, LOTTO_PRICE } from "../constant.js";
 
 /////////////////////////////////////////////////////////////////////
-// 입력 금액 검증
+// 입력 금액(로또 개수) 검증
 /////////////////////////////////////////////////////////////////////
 
 export const checkIfForbidden = (input) => {
