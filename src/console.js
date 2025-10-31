@@ -22,7 +22,7 @@ export const handleAmountInput = async () => {
 
 const printAmountAndCount = (amount) => {
   Console.print(
-    `${amount.getCount}장을 구매하셨습니다.(${amount.getAmount}원)`
+    `${amount.getCount()}장을 구매하셨습니다.(${amount.getAmount()}원)`
   );
 };
 
