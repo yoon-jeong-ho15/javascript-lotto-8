@@ -1,13 +1,16 @@
 import { Console } from "@woowacourse/mission-utils";
 import { clearInput, convertToNumber } from "./utils/parse.js";
 import Amount from "./class/Amount.js";
+import { checkIfForbidden } from "./utils/validate.js";
 
 export const handleAmountInput = async () => {
   try {
     const input = clearInput(
       await Console.readLineAsync("구입 금액을 입력해 주세요.\n")
     );
-    const amount = new Amount(convertToNumber(input));
+    checkIfForbidden(input);
+    const number = convertToNumber(input);
+    const amount = new Amount(number);
     printAmountAndCount(amount);
     return amount;
   } catch (error) {

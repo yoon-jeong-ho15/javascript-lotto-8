@@ -16,14 +16,19 @@ export const checkIfForbidden = (input) => {
   }
 };
 
-export const checkAmountRange = (ammount) => {
-  if (ammount > MAXIMUM_AMOUNT) {
-    throw new Error(`[ERROR] 1회 구매 한도는 10만원 100장 입니다.`);
-  }
-  if (ammount < LOTTO_PRICE) {
+export const checkAboveMinimum = (amount) => {
+  if (amount < LOTTO_PRICE) {
     throw new Error(`[ERROR] 최소 1,000원 이상의 금액을 입력해주세요.`);
   }
-  if (ammount % LOTTO_PRICE !== 0) {
+};
+export const checkBelowMaximum = (amount) => {
+  if (amount > MAXIMUM_AMOUNT) {
+    throw new Error(`[ERROR] 1회 구매 한도는 10만원 100장 입니다.`);
+  }
+};
+
+export const checkDivisible = (amount) => {
+  if (amount % LOTTO_PRICE !== 0) {
     throw new Error(`[ERROR] 1,000원 단위의 금액을 입력해주세요.`);
   }
 };
