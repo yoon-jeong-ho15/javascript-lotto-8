@@ -55,3 +55,20 @@ export const handleNumberInput = async () => {
     return await handleNumberInput();
   }
 };
+
+export const handleBonusInput = async (winningNumbers) => {
+  try {
+    const input = clearInput(
+      "number",
+      await Console.readLineAsync("보너스 번호를 입력해 주세요.\n")
+    );
+    checkIfHasNonNumberic(input);
+    const num = Number(input);
+    checkNumberRange(num);
+    checkIfDuplicatedNumbers([...winningNumbers, num]);
+    return num;
+  } catch (error) {
+    Console.print(error.message);
+    return await handleBonusInput(winningNumbers);
+  }
+};

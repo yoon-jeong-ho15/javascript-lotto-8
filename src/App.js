@@ -2,6 +2,7 @@ import {
   handleAmountInput,
   printLottos,
   handleNumberInput,
+  handleBonusInput,
 } from "./console.js";
 import { generateLottos } from "./utils/generate.js";
 
@@ -10,7 +11,8 @@ class App {
     const amount = await handleAmountInput();
     const lottos = generateLottos(amount.getCount());
     printLottos(lottos);
-    const winningNumber = await handleNumberInput();
+    const winningNumbers = await handleNumberInput();
+    const bonusNumber = await handleBonusInput(winningNumbers);
   }
 }
 
