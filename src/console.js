@@ -6,11 +6,12 @@ import { checkIfForbidden } from "./utils/validate.js";
 export const handleAmountInput = async () => {
   try {
     const input = clearInput(
+      "amount",
       await Console.readLineAsync("구입 금액을 입력해 주세요.\n")
     );
     checkIfForbidden(input);
-    const number = convertToNumber(input);
-    const amount = new Amount(number);
+    const amountNumber = convertToNumber(input);
+    const amount = new Amount(amountNumber);
     printAmountAndCount(amount);
     return amount;
   } catch (error) {

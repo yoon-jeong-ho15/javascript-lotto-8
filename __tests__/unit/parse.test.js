@@ -17,7 +17,7 @@ describe("clearInput", () => {
   });
 });
 
-escribe("convertToNumber", () => {
+describe("convertToNumber", () => {
   test.each([
     ["3만", 30000],
     ["삼만", 30000],

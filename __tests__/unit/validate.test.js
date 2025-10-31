@@ -1,10 +1,4 @@
-import {
-  breakIntoArr,
-  checkIfForbidden,
-  clearInput,
-  convertToNumber,
-  translate,
-} from "../../src/utils/validate";
+import { checkIfForbidden } from "../../src/utils/validate.js";
 
 describe("checkIfForbiden", () => {
   test.each(["*$원", "14억원", "가나다"])("에러 : %s", (input) => {

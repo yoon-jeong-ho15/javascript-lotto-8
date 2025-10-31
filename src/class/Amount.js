@@ -1,11 +1,8 @@
 import { LOTTO_PRICE } from "../constant.js";
 import {
-  clearInput,
-  checkIfForbidden,
-  convertToNumber,
-  checkAmountRange,
   checkAboveMinimum,
   checkBelowMaximum,
+  checkDivisible,
 } from "../utils/validate.js";
 
 class Amount {

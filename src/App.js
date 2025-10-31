@@ -1,5 +1,5 @@
 import { handleAmountInput, printLottos } from "./console.js";
-import { generateLottos } from "./generate.js";
+import { generateLottos } from "./utils/generate.js";
 
 class App {
   async run() {
