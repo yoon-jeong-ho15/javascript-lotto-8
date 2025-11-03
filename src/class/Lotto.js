@@ -1,4 +1,8 @@
-import { checkIfDuplicatedNumbers, checkLength } from "../utils/validate.js";
+import {
+  checkIfDuplicatedNumbers,
+  checkLength,
+  validateNumbers,
+} from "../utils/validate.js";
 
 class Lotto {
   #numbers;
@@ -9,8 +13,7 @@ class Lotto {
   }
 
   #validate(numbers) {
-    checkLength(numbers);
-    checkIfDuplicatedNumbers(numbers);
+    validateNumbers(numbers);
   }
 
   toString() {

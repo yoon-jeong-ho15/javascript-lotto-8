@@ -1,9 +1,13 @@
-import { clearInput, convertToNumber } from "../parse.js";
+import { clearInput, convertToNumber, calculateCount } from "../parse.js";
 import {
   validateAmountInput,
+  validateAmount,
   validateNumbers,
   validateBonusNumber,
+  validateNumbersInput,
+  validateBonusNumberInput,
 } from "../validate.js";
+import { Console } from "@woowacourse/mission-utils";
 
 export const handleAmountInput = async () => {
   try {
