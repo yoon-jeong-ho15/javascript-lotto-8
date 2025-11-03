@@ -1,26 +1,28 @@
 import {
   handleAmountInput,
-  printLottos,
   handleNumberInput,
   handleBonusInput,
+} from "./utils/console/input.js";
+import {
+  printLottos,
+  printLottoCount,
   printResult,
-} from "./console.js";
+} from "./utils/console/output.js";
 import { generateLottos } from "./utils/generate.js";
 import { getMatchResult } from "./utils/match.js";
 
 class App {
   async run() {
-    const amount = await handleAmountInput();
-    const lottos = generateLottos(amount.getCount());
+    const { amount, count } = await handleAmountInput();
+    printLottoCount(count);
+
+    const lottos = generateLottos(count);
     printLottos(lottos);
+
     const winningNumbers = await handleNumberInput();
     const bonusNumber = await handleBonusInput(winningNumbers);
-    const result = getMatchResult(
-      lottos,
-      winningNumbers,
-      bonusNumber,
-      amount.getAmount()
-    );
+
+    const result = getMatchResult(lottos, winningNumbers, bonusNumber, amount);
     printResult(result);
   }
 }
