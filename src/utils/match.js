@@ -15,7 +15,7 @@ export const getRank = (lotto, winningNumbers, bonusNumber) => {
   if (matchCount === 5 && lotto.hasBonus(bonusNumber)) {
     return SCORE_RANK_MAP["5+"];
   }
-  return SCORE_RANK_MAP[matchCount];
+  if (SCORE_RANK_MAP[matchCount]) return SCORE_RANK_MAP[matchCount];
 };
 
 export const getTotalWinning = (ranks) => {

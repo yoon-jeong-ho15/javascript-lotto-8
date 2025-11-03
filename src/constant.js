@@ -31,9 +31,6 @@ export const SCORE_RANK_MAP = {
   5: 3,
   4: 4,
   3: 5,
-  2: 0,
-  1: 0,
-  0: 0,
 };
 
 export const RANK_WINNING_MAP = {
@@ -42,5 +39,4 @@ export const RANK_WINNING_MAP = {
   3: 1500000, //150만
   4: 50000, //5만
   5: 5000, //5천
-  0: 0,
 };
