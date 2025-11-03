@@ -8,23 +8,21 @@ import {
   printLottoCount,
   printResult,
 } from "./utils/console/output.js";
-import { generateLottoNumbers } from "./utils/generate.js";
-import { getMatchResult } from "./utils/match.js";
-import Lotto from "./class/Lotto.js";
+import LottoGame from "./domain/LottoGame.js";
 
 class App {
   async run() {
     const { amount, count } = await handleAmountInput();
     printLottoCount(count);
 
-    const lottoNumbers = generateLottoNumbers(count);
-    const lottos = lottoNumbers.map((numbers) => new Lotto(numbers));
-    printLottos(lottos);
+    const game = new LottoGame(count);
+    printLottos(game.getLottos());
 
     const winningNumbers = await handleNumberInput();
     const bonusNumber = await handleBonusInput(winningNumbers);
+    game.setWinningNumbers(winningNumbers, bonusNumber);
 
-    const result = getMatchResult(lottos, winningNumbers, bonusNumber, amount);
+    const result = game.getResult();
     printResult(result);
   }
 }

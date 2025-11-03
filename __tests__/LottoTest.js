@@ -1,4 +1,4 @@
-import Lotto from "../src/class/Lotto.js";
+import Lotto from "../src/domain/Lotto.js";
 
 describe("생성자 테스트", () => {
   describe("정상 케이스", () => {
@@ -22,15 +22,15 @@ describe("생성자 테스트", () => {
   });
 });
 
-describe("당첨여부 테스트", () => {
-  test("3개 숫자가 일치", () => {
+describe("getRank는 당첨 등급을 반환한다.", () => {
+  test("3개 숫자가 일치하면 5등을 반환한다.", () => {
     const numbers = [1, 2, 3, 4, 5, 6];
     const bonusNumber = 10;
     const lotto = new Lotto([1, 2, 3, 7, 8, 9]);
     const result = lotto.getRank(numbers, bonusNumber);
     expect(result).toBe(5);
   });
-  test("0개 숫자가 일치", () => {
+  test("0개 숫자가 일치하면 undefined를 반환한다", () => {
     const numbers = [1, 2, 3, 4, 5, 6];
     const bonusNumber = 10;
     const lotto = new Lotto([7, 8, 9, 11, 12, 13]);
