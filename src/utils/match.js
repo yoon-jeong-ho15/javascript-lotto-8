@@ -1,39 +1,17 @@
-import { RANK_WINNING_MAP, SCORE_RANK_MAP } from "../constant";
+import { SCORE_RANK_MAP } from "../constant/constant.js";
 
-export const getMatchResult = (lottos, winningNumbers, bonusNumber, amount) => {
-  const ranks = {};
-
-  lottos.forEach((lotto) => {
-    const rank = getRank(lotto, winningNumbers, bonusNumber);
-    if (!rank) return;
-    if (ranks[rank]) {
-      ranks[rank]++;
-    } else {
-      ranks[rank] = 1;
-    }
-  });
-
-  const totalWinning = getTotalWinning(ranks);
-  const ratio = getRatio(totalWinning, amount);
-  return { ranks, ratio };
+export const countMatchingNumbers = (lottoNumbers, winningNumbers) => {
+  return winningNumbers.filter((number) => lottoNumbers.includes(number))
+    .length;
 };
 
-export const getRank = (lotto, winningNumbers, bonusNumber) => {
-  const matchCount = lotto.matchNumbers(winningNumbers);
-  if (matchCount === 5 && lotto.hasBonus(bonusNumber)) {
-    return SCORE_RANK_MAP["5+"];
+export const hasBonusNumber = (lottoNumbers, bonusNumber) => {
+  return lottoNumbers.includes(bonusNumber);
+};
+
+export const findRank = (matchCount, hasBonus) => {
+  if (matchCount === 5 && hasBonus) {
+    matchCount += "+";
   }
-  if (SCORE_RANK_MAP[matchCount]) return SCORE_RANK_MAP[matchCount];
-};
-
-export const getTotalWinning = (ranks) => {
-  return Object.entries(ranks).reduce(
-    (acc, [rank, count]) => acc + RANK_WINNING_MAP[rank] * count,
-    0
-  );
-};
-
-export const getRatio = (totalWinning, amount) => {
-  const num = (totalWinning / amount) * 100;
-  return Math.round(num * 10) / 10;
+  return SCORE_RANK_MAP[matchCount];
 };

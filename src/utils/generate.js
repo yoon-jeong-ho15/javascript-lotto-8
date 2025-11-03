@@ -1,29 +1,16 @@
 import { Random } from "@woowacourse/mission-utils";
-import Lotto from "../class/Lotto.js";
 import {
   MININUM_NUMBER,
   MAXIMUM_NUMBER,
   REQUIRED_NUMBERS_COUNT,
-} from "../constant.js";
+} from "../constant/constant.js";
 
-export const generateLottos = (count) => {
-  const lottos = [];
+export const generateLottoNumbers = (count) => {
+  const lottoNumbers = [];
   for (let i = 0; i < count; i++) {
-    const numbers = pickNumbers();
-    const lotto = createLotto(numbers);
-    lottos.push(lotto);
+    lottoNumbers.push(pickNumbers());
   }
-  return lottos;
-};
-
-export const createLotto = (numbers) => {
-  try {
-    const lotto = new Lotto(numbers);
-    return lotto;
-  } catch (error) {
-    const numbers = pickNumbers();
-    return createLotto(numbers);
-  }
+  return lottoNumbers;
 };
 
 const pickNumbers = () => {

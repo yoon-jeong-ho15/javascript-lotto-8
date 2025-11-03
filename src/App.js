@@ -1,26 +1,28 @@
 import {
   handleAmountInput,
-  printLottos,
   handleNumberInput,
   handleBonusInput,
+} from "./utils/console/input.js";
+import {
+  printLottos,
+  printLottoCount,
   printResult,
-} from "./console.js";
-import { generateLottos } from "./utils/generate.js";
-import { getMatchResult } from "./utils/match.js";
+} from "./utils/console/output.js";
+import LottoGame from "./domain/LottoGame.js";
 
 class App {
   async run() {
-    const amount = await handleAmountInput();
-    const lottos = generateLottos(amount.getCount());
-    printLottos(lottos);
+    const { amount, count } = await handleAmountInput();
+    printLottoCount(count);
+
+    const game = new LottoGame(count);
+    printLottos(game.getLottos());
+
     const winningNumbers = await handleNumberInput();
     const bonusNumber = await handleBonusInput(winningNumbers);
-    const result = getMatchResult(
-      lottos,
-      winningNumbers,
-      bonusNumber,
-      amount.getAmount()
-    );
+    game.setWinningNumbers(winningNumbers, bonusNumber);
+
+    const result = game.getResult();
     printResult(result);
   }
 }
