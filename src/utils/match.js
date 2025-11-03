@@ -15,7 +15,7 @@ export const getMatchResult = (lottos, winningNumbers, bonusNumber, amount) => {
 
   const totalWinning = getTotalWinning(ranks);
   const ratio = getRatio(totalWinning, amount);
-  return { ranks, totalWinning, ratio };
+  return { ranks, ratio };
 };
 
 export const getRank = (lotto, winningNumbers, bonusNumber) => {
@@ -34,6 +34,6 @@ export const getTotalWinning = (ranks) => {
 };
 
 export const getRatio = (totalWinning, amount) => {
-  const num = totalWinning / amount;
+  const num = (totalWinning / amount) * 100;
   return Math.round(num * 10) / 10;
 };

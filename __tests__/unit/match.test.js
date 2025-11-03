@@ -35,9 +35,10 @@ describe("getTotalWinning은 당첨금 총액을 반환한다.", () => {
 
 describe("getRatio는 총 수익률('당첨금 총액 / 구입액')을 소수 한자리수 까지 반올림을 해서 반환한다.", () => {
   test.each([
-    [100, 3, 33.3],
-    [100, 4, 25.0],
-    [100, 17, 5.9],
+    [100, 30, 333.3],
+    [100, 4, 2500.0],
+    [100, 17, 588.2],
+    [5000, 8000, 62.5],
   ])("%i를 %i로 나눈 후 반올림하면 %i가 된다.", (total, amount, rounded) => {
     const result = getRatio(total, amount);
     expect(result).toBe(rounded);
