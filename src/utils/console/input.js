@@ -1,9 +1,5 @@
 import { clearInput, convertToNumber } from "../parse.js";
 import {
-  checkIfDuplicatedNumbers,
-  checkIfHasNonNumberic,
-  checkNumberRange,
-  checkLength,
   validateAmountInput,
   validateNumbers,
   validateBonusNumber,

@@ -10,28 +10,32 @@ export const clearInput = (type, input) => {
 /////////////////////////////////////////////////////////////////////
 
 export const convertToNumber = (cleaned) => {
-  // "25000" -> 25000
   if (Number(cleaned)) return Number(cleaned);
 
-  // "2만5천", "이만오천" -> ["2","5천"]
-  const arr = breakIntoArr(cleaned);
+  // 만의 단위와 일의 단위 분리 : "2만5천" -> "2","5천"
+  const index = cleaned.indexOf("만");
+  // man : 만 이상의 단위 (만,십만,백만,천만)
+  // il : 만 이하의 단위 (일,십,백,천)
+  const man = cleaned.slice(0, Math.max(0, index));
+  const il = cleaned.slice(index + 1);
 
-  // ["2","5천"] -> [2,5000]
-  const [man, il] = arr.map(translate);
-
-  //[2,5000] -> 25000
-  let result = man * 10000 + il;
+  // "2","5천" -> 25000
+  const result = calculateAmount([il, man].map(translate));
 
   return result;
 };
 
-export const breakIntoArr = (cleaned) => {
-  if (!cleaned.includes("만")) return ["", cleaned];
-  return cleaned.split("만");
+export const calculateAmount = (numbers) => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    const number = numbers[i];
+    const digit = 10000 ** i;
+    sum += number * digit;
+  }
+  return sum;
 };
 
 export const translate = (str) => {
-  // "오천" -> ["","오천"] -> [0,5000]
   if (str === "") return 0;
 
   let result = [0, 0, 0, 0];
@@ -45,6 +49,10 @@ export const translate = (str) => {
   }
   return Number(result.join(""));
 };
+
+/////////////////////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////////////////////
 
 export const calculateCount = (amount) => {
   return amount / LOTTO_PRICE;
