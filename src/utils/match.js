@@ -1,9 +1,17 @@
 import { RANK_WINNING_MAP, SCORE_RANK_MAP } from "../constant";
 
 export const getMatchResult = (lottos, winningNumbers, bonusNumber, amount) => {
-  const ranks = lottos.map((lotto) =>
-    getRank(lotto, winningNumbers, bonusNumber)
-  );
+  const ranks = {};
+
+  lottos.forEach((lotto) => {
+    const rank = getRank(lotto, winningNumbers, bonusNumber);
+    if (!rank) return;
+    if (ranks[rank]) {
+      ranks[rank]++;
+    } else {
+      ranks[rank] = 1;
+    }
+  });
 
   const totalWinning = getTotalWinning(ranks);
   const ratio = getRatio(totalWinning, amount);
@@ -19,7 +27,10 @@ export const getRank = (lotto, winningNumbers, bonusNumber) => {
 };
 
 export const getTotalWinning = (ranks) => {
-  return ranks.reduce((acc, rank) => acc + RANK_WINNING_MAP[rank], 0);
+  return Object.entries(ranks).reduce(
+    (acc, [rank, count]) => acc + RANK_WINNING_MAP[rank] * count,
+    0
+  );
 };
 
 export const getRatio = (totalWinning, amount) => {
