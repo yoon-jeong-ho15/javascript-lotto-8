@@ -1,8 +1,9 @@
+import { validateNumbers } from "../utils/validate.js";
 import {
-  checkIfDuplicatedNumbers,
-  checkLength,
-  validateNumbers,
-} from "../utils/validate.js";
+  countMatchingNumbers,
+  hasBonusNumber,
+  findRank,
+} from "../utils/match.js";
 
 class Lotto {
   #numbers;
@@ -20,15 +21,12 @@ class Lotto {
     return `[${this.#numbers.join(", ")}]`;
   }
 
-  matchNumbers(winningNumbers) {
-    const matchCount = winningNumbers.filter((number) =>
-      this.#numbers.includes(number)
-    ).length;
-    return matchCount;
-  }
+  getRank(winningNumbers, bonusNumber) {
+    const matchCount = countMatchingNumbers(this.#numbers, winningNumbers);
+    const hasBonus = hasBonusNumber(this.#numbers, bonusNumber);
+    const rank = findRank(matchCount, hasBonus);
 
-  hasBonus(bonusNumber) {
-    return this.#numbers.includes(bonusNumber);
+    return rank;
   }
 }
 
