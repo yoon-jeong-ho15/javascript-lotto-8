@@ -8,15 +8,17 @@ import {
   printLottoCount,
   printResult,
 } from "./utils/console/output.js";
-import { generateLottos } from "./utils/generate.js";
+import { generateLottoNumbers } from "./utils/generate.js";
 import { getMatchResult } from "./utils/match.js";
+import Lotto from "./class/Lotto.js";
 
 class App {
   async run() {
     const { amount, count } = await handleAmountInput();
     printLottoCount(count);
 
-    const lottos = generateLottos(count);
+    const lottoNumbers = generateLottoNumbers(count);
+    const lottos = lottoNumbers.map((numbers) => new Lotto(numbers));
     printLottos(lottos);
 
     const winningNumbers = await handleNumberInput();

@@ -1,5 +1,5 @@
 import App from "../src/App.js";
-import { getLogSpy, mockQuestions, mockRandoms } from "../src/test/mock.js";
+import { getLogSpy, mockQuestions, mockRandoms } from "../src/mock.js";
 
 const runException = async (input) => {
   // given

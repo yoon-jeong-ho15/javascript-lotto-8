@@ -5,7 +5,7 @@ import {
   MAXIMUM_NUMBER,
   MININUM_NUMBER,
   REQUIRED_NUMBERS_COUNT,
-} from "../constant.js";
+} from "../constant/constant.js";
 
 /////////////////////////////////////////////////////////////////////
 // 금액 검증

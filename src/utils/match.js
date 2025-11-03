@@ -1,4 +1,4 @@
-import { RANK_WINNING_MAP, SCORE_RANK_MAP } from "../constant";
+import { RANK_WINNING_MAP, SCORE_RANK_MAP } from "../constant/constant.js";
 
 export const getMatchResult = (lottos, winningNumbers, bonusNumber, amount) => {
   const ranks = {};

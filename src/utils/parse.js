@@ -1,4 +1,8 @@
-import { DIGIT_NUMBER_MAP, LOTTO_PRICE, NUMBER_MAP } from "../constant.js";
+import {
+  DIGIT_NUMBER_MAP,
+  LOTTO_PRICE,
+  NUMBER_MAP,
+} from "../constant/constant.js";
 
 export const clearInput = (type, input) => {
   if (type === "amount") return input.replaceAll(/[ ,원]/g, "");
