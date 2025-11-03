@@ -1,8 +1,4 @@
-import {
-  DIGIT_NUMBER_MAP,
-  LOTTO_PRICE,
-  NUMBER_MAP,
-} from "../constant/constant.js";
+import { DIGIT_NUMBER_MAP, NUMBER_MAP } from "../constant/constant.js";
 
 export const clearInput = (type, input) => {
   if (type === "amount") return input.replaceAll(/[ ,원]/g, "");
@@ -52,12 +48,4 @@ export const translate = (str) => {
     if (Number(ch)) result[digitIndex] = Number(ch);
   }
   return Number(result.join(""));
-};
-
-/////////////////////////////////////////////////////////////////////
-//
-/////////////////////////////////////////////////////////////////////
-
-export const calculateCount = (amount) => {
-  return amount / LOTTO_PRICE;
 };

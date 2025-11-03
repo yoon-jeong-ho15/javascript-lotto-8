@@ -1,4 +1,5 @@
-import { clearInput, convertToNumber, calculateCount } from "../parse.js";
+import { clearInput, convertToNumber } from "../parse.js";
+import { calculateCount } from "../calculate.js";
 import {
   validateAmountInput,
   validateAmount,

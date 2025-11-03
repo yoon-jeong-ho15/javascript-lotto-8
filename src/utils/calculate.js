@@ -12,3 +12,7 @@ export const calculateRatio = (totalWinning, count) => {
   const number = (totalWinning / amount) * 100;
   return Math.round(number * 10) / 10;
 };
+
+export const calculateCount = (amount) => {
+  return amount / LOTTO_PRICE;
+};
