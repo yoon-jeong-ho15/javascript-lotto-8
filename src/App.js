@@ -3,8 +3,10 @@ import {
   printLottos,
   handleNumberInput,
   handleBonusInput,
+  printResult,
 } from "./console.js";
 import { generateLottos } from "./utils/generate.js";
+import { getMatchResult } from "./utils/match.js";
 
 class App {
   async run() {
